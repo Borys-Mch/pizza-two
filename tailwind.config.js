@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["ClashDisplay-Regular", ...defaultTheme.fontFamily.sans],
+        sans: ["ClashDisplay-Regular", "...defaultTheme.fontFamily.sans"],
       },
       colors: {
         tomato: "#E50914",
