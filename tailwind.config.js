@@ -2,7 +2,15 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ["ClashDisplay-Regular", ...defaultTheme.fontFamily.sans],
+      },
+      colors: {
+        tomato: "#E50914",
+        marigold: "#FFBE0B",
+      },
+    },
   },
   plugins: [],
 };
