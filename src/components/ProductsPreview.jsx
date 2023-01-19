@@ -2,9 +2,12 @@ import { useState, useEffect } from "react";
 import { ProductPreviewCard } from "./ProductPreviewCard";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../stores/cart/cartSlice";
 
 export const ProductsPreview = () => {
   const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
 
   const responsive = {
     superLargeDesktop: {
@@ -32,6 +35,10 @@ export const ProductsPreview = () => {
       .then((data) => setProducts(data?.data))
       .catch((e) => console.log(e));
   }, []);
+
+  const onAddProduct = (product) => {
+    dispatch(addToCart(product));
+  };
   return (
     <div className="container mx-auto pb-4 w-2/3 text-white">
       <Carousel responsive={responsive}>
@@ -39,7 +46,10 @@ export const ProductsPreview = () => {
           products.map((product, index) => {
             return (
               <div key={index} className="w-full p-3">
-                <ProductPreviewCard product={product} />
+                <ProductPreviewCard
+                  product={product}
+                  onAddProduct={onAddProduct}
+                />
               </div>
             );
           })}
